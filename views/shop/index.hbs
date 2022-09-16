@@ -1,0 +1,30 @@
+<main>
+    {{#if hasProducts }}
+    <div class="grid">
+        {{#each prods}}
+        <article class="card product-item">
+            <div class="card__image">
+               <a href="/products/{{this._id}}"> <img src="{{ this.imageUrl }}"
+                    alt="{{ this.title }}"></a>
+            </div>
+            <div class="card__header">
+                <h1 class="product__title">{{ this.title }}</h1>
+            </div>
+            <div class="card__content">
+                <p class="product__description">{{ this.description }}</p>
+                <h2 class="product__price">{{ this.price }} $</h2>
+            </div>
+            <div class="card__actions">
+                {{!-- <form action="/cart" method="post"> --}}
+                    <a href="/products/{{this._id}}" class="btn">Details</a>
+                    <button class="btn" type="submit">Add to cart</button>
+                    <input type="hidden" name="productId" value="{{this.id}}" />
+                {{!-- </form> --}}
+            </div>
+        </article>
+        {{/each}}
+    </div>
+    {{ else }}
+    <h1>No Products Found!</h1>
+    {{/if}}
+</main>

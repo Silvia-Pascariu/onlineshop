@@ -1,0 +1,18 @@
+<main>
+ <div class="center">
+    <div class="product_left">
+        <div class="image"><img src="{{product.imageUrl}}" alt="{{product.title }}"></div>
+    </div>
+
+    <div class="product_right">
+        <h1 class="product__title">{{product.title }}</h1>
+        <p>{{product.description}}</p>
+         <h2>Price : {{product.price}} $</h2>
+        <form action="/cart" method="post">
+            <button class="btn" type="submit">Add to cart</button>
+            <input type="hidden" name="productId" value="{{product.id}}" />
+        </form>
+    </div>
+
+</div>
+</main>
