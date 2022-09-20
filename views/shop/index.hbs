@@ -3,23 +3,22 @@
     <div class="grid">
         {{#each prods}}
         <article class="card product-item">
-            <div class="card__image">
-               <a href="/products/{{this._id}}"> <img src="{{ this.imageUrl }}"
-                    alt="{{ this.title }}"></a>
-            </div>
-            <div class="card__header">
+            <header class="card__header">
                 <h1 class="product__title">{{ this.title }}</h1>
+            </header>
+            <div class="card__image">
+                <img src="{{ this.imageUrl }}"
+                    alt="{{ this.title }}">
             </div>
             <div class="card__content">
+                <h2 class="product__price">{{ this.price }}</h2>
                 <p class="product__description">{{ this.description }}</p>
-                <h2 class="product__price">{{ this.price }} $</h2>
             </div>
             <div class="card__actions">
-                {{!-- <form action="/cart" method="post"> --}}
-                    <a href="/products/{{this._id}}" class="btn">Details</a>
+                <form action="/cart" method="post">
                     <button class="btn" type="submit">Add to cart</button>
                     <input type="hidden" name="productId" value="{{this.id}}" />
-                {{!-- </form> --}}
+                </form>
             </div>
         </article>
         {{/each}}

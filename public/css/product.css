@@ -4,14 +4,11 @@
     margin: auto;
     display: block;
 }
-.product-item {
 
-}
-/* .product-item:nth-child(4n+1 ) {
-    grid-column: 1 / 4;
-} */
-.product-item:nth-child(4n+1 ) .card__image img{
-    object-fit: cover;
+.product-item {
+    width: 20rem;
+    max-width: 95%;
+    margin: 1rem;
 }
 
 .product__title {
@@ -27,13 +24,4 @@
 
 .product__description {
     text-align: center;
-}
-
-.product_right  .product__title{
-    font-size: 2rem;
-    text-align: left;
-}
-
-.product_right  h2{
-    font-size: 1rem;
 }

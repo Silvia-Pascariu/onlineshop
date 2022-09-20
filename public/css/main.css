@@ -19,31 +19,18 @@ form {
   display: inline;
 }
 
-
-.center {
-  display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: stretch;
-  margin-top: 100px;
+.centered {
+  text-align: center;
 }
 
-.product_left .image {
-  width: 600px;
-    height: auto;
-}
-.product_left .image img{
-  width: 100%;
+.image {
+  height: 20rem;
 }
 
-
-.product_right{
-  display: block;
-  text-align: left;
-  margin-left: 60px;
+.image img {
+  height: 100%;
 }
+
 .main-header {
   width: 100%;
   height: 3.5rem;
@@ -160,11 +147,10 @@ form {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
-  grid-template-rows: 550px 600px;
-  grid-column-gap: 10px;
-  grid-row-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 .card {
@@ -173,6 +159,7 @@ form {
 
 .card__header,
 .card__content {
+  padding: 1rem;
 }
 
 .card__header h1,
@@ -183,15 +170,11 @@ form {
 }
 
 .card__image {
-  max-width: 100%;
-  height: 350px;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .card__image img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .card__actions {
@@ -219,6 +202,17 @@ form {
 .btn:hover,
 .btn:active {
   background-color: #00695c;
+  color: white;
+}
+
+.btn.danger {
+  color: red;
+  border-color: red;
+}
+
+.btn.danger:hover,
+.btn.danger:active {
+  background: red;
   color: white;
 }
 
