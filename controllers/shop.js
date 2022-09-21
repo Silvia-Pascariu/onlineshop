@@ -9,6 +9,7 @@ exports.getProducts = (req, res, next) => {
       pageTitle: 'All Products',
       path: '/products',
       hasProducts: products.length > 0,
+      isAuthenticated: req.session.isLoggedIn,
       activeShop: true,
       productCSS: true
     });
@@ -26,6 +27,7 @@ exports.getProduct = (req, res, next) => {
       product: product,
      // pageTitle: product.title,
       path: '/products',
+      isAuthenticated: req.session.isLoggedIn,
       activeShop: true,
       productCSS: true
     });
@@ -44,7 +46,8 @@ exports.getIndex = (req, res, next) => {
       path: '/',
       hasProducts: products.length > 0,
       activeShop: true,
-      productCSS: true
+      productCSS: true,
+      isAuthenticated: req.session.isLoggedIn
     });
   })
   .catch (err => {
@@ -54,32 +57,35 @@ exports.getIndex = (req, res, next) => {
 
 
 exports.getCart = (req, res, next) => {
-  req.user 
-  .populate('cart.items.productId')
-  .then (user => {
-    const products = user.cart.items;
-    res.render ('shop/cart', {
-      path : '/cart',
-      pageTitle : 'Your Cart',
-      products : products,
-      hasProducts: products.length > 0,
-      activeShop: true,
-      productCSS: true
+  req.user
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then(user => {
+      const products = user.cart.items;
+      res.render('shop/cart', {
+        path: '/cart',
+        pageTitle: 'Your Cart',
+        products: products,
+        isAuthenticated: req.session.isLoggedIn,
+        hasProducts: products.length > 0,
+        activeShop: true,
+        productCSS: true
+      });
     })
-  })
-  .catch (err => console.log(err))
+    .catch(err => console.log(err));
 };
+
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findById(prodId)
-  .then(product => {
-    return req.user.addToCart(product);
-  })
-  .then (result =>{
-    console.log(result);
-    res.redirect('/cart');
-  })
+    .then(product => {
+      return req.user.addToCart(product);
+    })
+    .then(result => {
+      console.log(result);
+      res.redirect('/cart');
+    });
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {
@@ -131,13 +137,7 @@ exports.getOrders = (req, res, next) => {
       hasProducts: orders.length > 0,
       activeShop: true,
       productCSS: true,
+      isAuthenticated: req.session.isLoggedIn
     })
   })
-};
-
-exports.getCheckout = (req, res, next) => {
-  res.render('shop/checkout', {
-    path: '/checkout',
-    pageTitle: 'Checkout'
-  });
 };

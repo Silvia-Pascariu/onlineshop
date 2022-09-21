@@ -11,11 +11,19 @@
   "license": "ISC",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "connect-mongodb-session": "^3.1.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
     "mongodb": "^4.9.1",
-    "mongoose": "^6.6.1"
+    "mongoose": "^6.6.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.8",
+    "nodemailer-sendgrid-transport": "^0.2.0"
   },
   "devDependencies": {
     "handlebars": "^4.5.0",
